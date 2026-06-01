@@ -1,0 +1,330 @@
+SOFTWARE REQUIREMENTS SPECIFICATION (SRS)
+Personal Portfolio Website
+Version 1.0
+
+1. Introduction
+1.1 Purpose
+This Software Requirements Specification (SRS) defines the requirements for a futuristic, interactive, and
+visually immersive personal portfolio website. The platform will serve as a professional digital presence
+showcasing the portfolio owner's expertise in Artificial Intelligence, Machine Learning, Full-Stack Web
+Development, Network Engineering, Cybersecurity, and Data Analytics.
+The website will provide visitors, recruiters, clients, researchers, and collaborators with an engaging
+experience through advanced 3D visualizations, interactive animations, project showcases, and professional
+information.
+
+1.2 Scope
+The system will function as a modern portfolio platform featuring:
+• Interactive 3D user interface
+• Professional profile presentation
+• Dynamic project showcase
+• Technical skills visualization
+• Experience and achievements section
+• Research and publications section
+• Downloadable CV/Resume
+• Contact and collaboration portal
+• Responsive design for desktop and mobile devices
+• High-performance rendering and animations
+The website shall emphasize innovation, technical excellence, and modern user experience principles.
+
+1
+
+1.3 Intended Audience
+The platform is intended for:
+• Recruiters
+• Hiring Managers
+• Research Supervisors
+• Potential Clients
+• Startup Founders
+• Academic Institutions
+• Industry Professionals
+• Technology Enthusiasts
+
+2. Overall Description
+2.1 Product Perspective
+The website will act as a digital professional identity and personal brand platform.
+The design philosophy combines:
+• Futuristic UI
+• Cyberpunk-inspired visuals
+• AI-themed animations
+• Interactive 3D experiences
+• Professional portfolio functionality
+
+2.2 User Classes
+Visitor
+Can:
+• Browse website
+• View projects
+• Read about skills
+• Download CV
+• Submit contact form
+
+2
+
+Recruiter
+Can:
+• Review technical skills
+• Access projects
+• Evaluate experience
+• Download resume
+• Contact owner
+
+Administrator (Portfolio Owner)
+Can:
+• Manage projects
+• Update content
+• Manage blog posts
+• View contact submissions
+• Manage resume versions
+
+3. Functional Requirements
+3.1 Landing Experience
+FR-001
+The system shall display a full-screen futuristic landing page.
+
+FR-002
+The system shall render a 3D animated environment upon page load.
+
+FR-003
+The system shall display the portfolio owner's professional title:
+"AI Engineer | Full-Stack Developer | Network Engineer"
+
+FR-004
+The system shall support smooth scrolling navigation.
+
+FR-005
+The system shall provide a call-to-action button directing visitors to projects.
+
+3
+
+3.2 3D Interactive Scene
+FR-006
+The system shall display a 3D scene built using WebGL technologies.
+
+FR-007
+The scene shall respond to user mouse movement.
+
+FR-008
+The scene shall support camera transitions.
+
+FR-009
+The scene shall maintain at least 60 FPS on supported devices.
+
+FR-010
+The system shall include animated AI, networking, and cybersecurity themed visual elements.
+Examples:
+• Neural network visualization
+• Data streams
+• Floating network nodes
+• Holographic interfaces
+• Cyber grids
+
+3.3 About Section
+FR-011
+The system shall display professional biography.
+
+FR-012
+The system shall present educational background.
+
+FR-013
+The system shall display career objectives.
+
+4
+
+FR-014
+The system shall include an animated timeline.
+
+3.4 Skills Section
+FR-015
+The system shall display skills grouped by domain.
+Domains:
+• Artificial Intelligence
+• Machine Learning
+• Web Development
+• Network Engineering
+• Cybersecurity
+• Data Analytics
+
+FR-016
+Skills shall be displayed as interactive 3D elements.
+
+FR-017
+Users shall view additional information when hovering over skills.
+
+3.5 Project Showcase
+FR-018
+The system shall display featured projects.
+
+FR-019
+Each project shall include:
+• Title
+• Description
+• Technologies
+• Screenshots
+• GitHub Repository
+• Live Demo
+
+5
+
+FR-020
+Projects shall open within immersive modal windows.
+
+FR-021
+The system shall support project filtering.
+Filters:
+• AI
+• Networking
+• Cybersecurity
+• Web Development
+• Data Analysis
+
+3.6 Research Section
+FR-022
+The system shall display research interests.
+
+FR-023
+The system shall present publications and technical reports.
+
+FR-024
+The system shall support downloadable PDFs.
+
+3.7 Resume Section
+FR-025
+The system shall provide CV download functionality.
+
+FR-026
+The system shall support multiple resume versions.
+Examples:
+• AI Resume
+• Software Resume
+
+6
+
+• Networking Resume
+
+3.8 Contact System
+FR-027
+The system shall provide a contact form.
+Fields:
+• Name
+• Email
+• Subject
+• Message
+
+FR-028
+The system shall validate inputs.
+
+FR-029
+The system shall notify the administrator upon submission.
+
+3.9 Blog Section
+FR-030
+The system shall provide a technical blog.
+
+FR-031
+The administrator shall create and edit articles.
+
+FR-032
+Visitors shall search articles.
+
+7
+
+4. Non-Functional Requirements
+4.1 Performance
+NFR-001
+Initial page load shall be less than 4 seconds.
+
+NFR-002
+Animations shall maintain smooth performance.
+
+NFR-003
+3D rendering shall degrade gracefully on low-end devices.
+
+4.2 Security
+NFR-004
+The system shall use HTTPS.
+
+NFR-005
+Contact forms shall implement CSRF protection.
+
+NFR-006
+User input shall be sanitized.
+
+NFR-007
+Rate limiting shall be implemented.
+
+4.3 Usability
+NFR-008
+The interface shall be intuitive.
+
+NFR-009
+The website shall support keyboard navigation.
+
+8
+
+NFR-010
+The website shall meet accessibility standards.
+
+4.4 Compatibility
+NFR-011
+The website shall support:
+• Chrome
+• Firefox
+• Edge
+• Safari
+
+NFR-012
+The website shall be fully responsive.
+
+5. Technology Stack
+Frontend
+• Next.js
+• React
+• TypeScript
+• Tailwind CSS
+
+3D Engine
+• Three.js
+• React Three Fiber
+• Drei
+
+Animation
+• Framer Motion
+• GSAP
+
+Backend
+• Django
+• Django REST Framework
+
+9
+
+Database
+• PostgreSQL
+
+Deployment
+• Docker
+• Nginx
+• Linux VPS
+
+6. Future Enhancements
+• AI-powered portfolio assistant
+• Interactive chatbot
+• Voice navigation
+• Real-time visitor analytics
+• AI resume reviewer
+• AI project recommendation engine
+• WebXR/VR support
+• Interactive 3D virtual office
+• Digital twin workspace
+• Live coding demonstrations
+
+7. Success Criteria
+The project shall be considered successful when:
+• The website provides a unique futuristic experience.
+• Visitors can easily explore projects and skills.
+• Recruiters can assess qualifications quickly.
+• The platform performs smoothly across devices.
+• The website effectively represents the owner's professional brand.
+
+10
+
+
