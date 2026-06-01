@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* ===== Refined Professional Design System ===== */
+/* Inspired by Apple / Steve Jobs keynote aesthetics */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Fira Code", "SF Mono", monospace;
+
+  /* Monochrome palette */
+  --color-pure-black: #000000;
+  --color-rich-black: #0a0a0a;
+  --color-charcoal: #141414;
+  --color-dark-gray: #1a1a1a;
+  --color-mid-gray: #2a2a2a;
+  --color-soft-gray: #888888;
+  --color-light-gray: #b0b0b0;
+  --color-off-white: #e8e8e8;
+  --color-pure-white: #ffffff;
+
+  /* Single refined accent */
+  --color-accent: #6366f1;
+  --color-accent-soft: rgba(99, 102, 241, 0.08);
+  --color-accent-glow: rgba(99, 102, 241, 0.15);
+}
+
+:root {
+  --background: #000000;
+  --foreground: #e8e8e8;
+}
+
+/* ===== Global Resets ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000000;
+  color: #e8e8e8;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar — minimal ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(99, 102, 241, 0.25);
+  color: #fff;
+}
+
+/* ===== Section Heading ===== */
+.section-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .section-heading {
+    font-size: 2rem;
+  }
+}
+
+/* ===== Subtle Divider ===== */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: #2a2a2a;
+  margin: 2rem 0;
+}
+.divider-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== Card ===== */
+.card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card:hover {
+  border-color: #2a2a2a;
+  transform: translateY(-2px);
+}
+
+/* ===== Pill / Badge ===== */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #888888;
+  background: #141414;
+  border: 1px solid #1a1a1a;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+.pill:hover {
+  color: #e8e8e8;
+  border-color: #2a2a2a;
+}
+
+/* ===== Primary Button ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  background: #e8e8e8;
+  color: #000000;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-primary:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
+}
+
+/* ===== Secondary Button ===== */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  color: #e8e8e8;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-secondary:hover {
+  border-color: #888888;
+  transform: translateY(-1px);
+}
+
+/* ===== Input ===== */
+.input-field {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.875rem;
+  color: #e8e8e8;
+  transition: all 0.3s ease;
+  outline: none;
+}
+.input-field::placeholder {
+  color: #444;
+}
+.input-field:focus {
+  border-color: #2a2a2a;
+  box-shadow: 0 0 0 3px rgba(42, 42, 42, 0.3);
+}
+
+/* ===== Animations — understated ===== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes subtle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+
+.animate-subtle-float {
+  animation: subtle-float 8s ease-in-out infinite;
+}
+.animate-subtle-pulse {
+  animation: subtle-pulse 4s ease-in-out infinite;
+}
