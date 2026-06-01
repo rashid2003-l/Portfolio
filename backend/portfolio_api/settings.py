@@ -143,7 +143,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True # Set to False in production and configure the allowed origins below
+# CORS_ALLOWED_ORIGINS = [
+#     "https://your-frontend.onrender.com",
+# ]
 
 import os
 MEDIA_URL = '/media/'
