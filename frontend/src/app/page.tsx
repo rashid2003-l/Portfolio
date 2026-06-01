@@ -16,7 +16,7 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.08, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { delay: i * 0.08, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as any },
   }),
 };
 
@@ -179,6 +179,54 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [expandedPub, setExpandedPub] = useState<number | null>(null);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormStatus("error");
+      setFormError("Please fill out all required fields.");
+      return;
+    }
+    setFormStatus("submitting");
+    setFormError("");
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const res = await fetch(`${apiUrl}/api/contact/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setFormStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        const data = await res.json();
+        setFormStatus("error");
+        setFormError(data.detail || "Failed to send message. Please try again later.");
+      }
+    } catch (err) {
+      setFormStatus("error");
+      setFormError("An unexpected network error occurred. Please check your connection.");
+    }
+  };
 
   const filteredProjects = activeCategory === "All"
     ? projects
@@ -752,27 +800,37 @@ export default function Home() {
               custom={3}
               variants={fadeUp}
               className="space-y-5"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleFormSubmit}
             >
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-[13px] text-[#555] mb-2">
-                    Name
+                    Name <span className="text-red-500/60">*</span>
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="Your name"
                     className="input-field"
+                    required
+                    disabled={formStatus === "submitting"}
                   />
                 </div>
                 <div>
                   <label className="block text-[13px] text-[#555] mb-2">
-                    Email
+                    Email <span className="text-red-500/60">*</span>
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="you@example.com"
                     className="input-field"
+                    required
+                    disabled={formStatus === "submitting"}
                   />
                 </div>
               </div>
@@ -782,22 +840,58 @@ export default function Home() {
                 </label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   placeholder="What's this about?"
                   className="input-field"
+                  disabled={formStatus === "submitting"}
                 />
               </div>
               <div>
                 <label className="block text-[13px] text-[#555] mb-2">
-                  Message
+                  Message <span className="text-red-500/60">*</span>
                 </label>
                 <textarea
                   rows={5}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Tell me about your project..."
                   className="input-field resize-none"
+                  required
+                  disabled={formStatus === "submitting"}
                 />
               </div>
-              <button type="submit" className="btn-primary w-full md:w-auto">
-                Send Message
+
+              {formStatus === "success" && (
+                <div className="p-4 border border-white/20 bg-white/5 rounded-lg text-white text-[13.5px] font-light tracking-wide text-center">
+                  Thank you. Your message has been sent. I will get back to you shortly.
+                </div>
+              )}
+
+              {formStatus === "error" && (
+                <div className="p-4 border border-red-900/30 bg-red-950/10 rounded-lg text-red-400 text-[13.5px] font-light tracking-wide text-center">
+                  {formError}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={formStatus === "submitting"}
+                className="btn-primary w-full md:w-auto flex items-center justify-center gap-2"
+              >
+                {formStatus === "submitting" ? (
+                  <>
+                    <svg className="animate-spin h-4 w-4 text-black" viewBox="0 0 24 24" fill="none">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
               </button>
             </motion.form>
           </motion.div>
